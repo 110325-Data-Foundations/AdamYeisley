@@ -178,4 +178,25 @@ my_set.discard(3)
 
 print(my_set)
 
-#4694064499
+#ADD MISSING NOTES HERE
+
+# Dictionary
+# Collections of key/value errors. JUst about any data type can be used for keys and values.
+#They are mutable and you can have duplicate values, but keys must be unique
+# Semantics: maybe keys were always indexes? But rece
+
+
+my_dictionary = {
+    "key": "value",
+    100:1000,
+    None:"This will still work",
+
+
+}
+
+print(my_dictionary)
+
+#adding a new key value pair to the dictionary
+my_dictionary["new key"] = 23
+
+print(my_dictionary)
