@@ -12,13 +12,15 @@ while True:
   print("Please enter your first name:")
   name = input()
  elif mainmenu_input == 2:
+  print("Please enter grade(s) and enter a number outside of 0-100 to exit.")
   while True:
-   print("Please enter grades or enter a number greater than 100 to exit:")
    grade_entry_input = int(input())
-   if grade_entry_input > 100:
-     break
+   if 0 < grade_entry_input < 100:
+     grade_list.append(grade_entry_input)
    else:
-    grade_list.append(grade_entry_input)
+    print("You have entered a number outside of the scope of 0-100, returning to main menu.")
+
+
  elif mainmenu_input == 3:
   grade_avg = sum(grade_list)/len(grade_list)
   print(grade_avg) 
