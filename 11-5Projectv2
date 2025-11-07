@@ -1,0 +1,80 @@
+import statistics # Used for math equations
+print("Welcome to Adam's Grade Calculator!")
+students = {}  # Creates dictionary
+current_student = None # Start with no student
+
+while True:
+    print("Welcome to the main menu. Please enter a number and press enter to select a menu option.")
+    print("1 - Add New Student")
+    print("2 - Select Student")
+    print("3 - Grade Entry")
+    print("4 - Grade Average")
+    print("5 - All Entered Info")
+    print("6 - Exit Program")
+    mainmenu_input = int(input())
+
+    if mainmenu_input == 1:
+        print("Enter new student's first name:")
+        name = input()
+        if name in students:
+            print("Student already exists.")
+        else:
+            students[name] = []
+            print(f"{name} has been added.")
+        current_student = name
+
+    elif mainmenu_input == 2:
+        if not students:
+            print("No students available, please add a new student first.")
+            continue
+        print("Available students:")
+        for s in students: # Loops through key "s", aka the student names
+            print(s)
+        print("Enter the name of the student to select:")
+        entered_name = input()
+        if entered_name in students:
+            current_student = entered_name
+            print(f"Selected student: {current_student}")
+        else:
+            print("Student not found.")
+
+    elif mainmenu_input == 3:
+        if current_student is None:
+            print("Please select a student first.")
+            continue
+        print(f"Entering grades for {current_student}. Enter a number outside 0-100 to exit.")
+        while True:
+            grade_entry_input = int(input())
+            if 0 < grade_entry_input < 100:
+                students[current_student].append(grade_entry_input)
+            else:
+                print("Done entering grades.")
+                break
+
+    elif mainmenu_input == 4:
+        if current_student is None or not students[current_student]:
+            print("No grades entered for current student.")
+            continue
+        grade_avg = sum(students[current_student]) / len(students[current_student])
+        print(f"{current_student}'s grade average: {grade_avg}")
+
+    elif mainmenu_input == 5:
+        if not students:
+            print("No students or grades available.")
+            continue
+        for name, grades in students.items():
+            if grades: # Check if grades are empty
+                grade_avg = sum(grades) / len(grades)
+                print(f"Name: {name}")
+                print(f"Grades: {grades}")
+                print(f"Average: {grade_avg}")
+                print(f"Highest: {max(grades)}")
+                print(f"Lowest: {min(grades)}")
+            else:
+                print(f"Name: {name} (no grades)")
+
+    elif mainmenu_input == 6:
+        print("Thanks for using Adam's Grade Calculator! Goodbye. :)")
+        break
+    else:
+        print("Invalid menu option, try again. :(")
