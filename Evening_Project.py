@@ -3,6 +3,11 @@ print("Welcome to Adam's Grade Calculator!")
 students = {}  # Creates dictionary
 current_student = None # Start with no student
 
+
+
+
+
+
 while True:
     print("Welcome to the main menu. Please enter a number and press enter to select a menu option.")
     print("1 - Add New Student")
@@ -58,23 +63,48 @@ while True:
         grade_avg = sum(students[current_student]) / len(students[current_student])
         print(f"{current_student}'s grade average: {grade_avg}")
 
-    elif mainmenu_input == 5:
-        if not students:
-            print("No students or grades available.")
-            continue
-        for name, grades in students.items():
-            if grades: # Check if grades are empty
-                grade_avg = sum(grades) / len(grades)
-                print(f"Name: {name}")
-                print(f"Grades: {grades}")
-                print(f"Average: {grade_avg}")
-                print(f"Highest: {max(grades)}")
-                print(f"Lowest: {min(grades)}")
-            else:
-                print(f"Name: {name} (no grades)")
+    
+    
+    
+    
+#    elif mainmenu_input == 5:
+#        if not students:
+#            print("No students or grades available.")
+#            continue
+#        for name, grades in students.items():
+#            if grades: # Check if grades are empty
+#                grade_avg = sum(grades) / len(grades)
+#                print(f"Name: {name}")
+#                print(f"Grades: {grades}")
+#                print(f"Average: {grade_avg}")
+#                print(f"Highest: {max(grades)}")
+#                print(f"Lowest: {min(grades)}")
+#            else:
+#                print(f"Name: {name} (no grades)")
 
     elif mainmenu_input == 6:
         print("Thanks for using Adam's Grade Calculator! Goodbye. :)")
         break
     else:
         print("Invalid menu option, try again. :(")
+
+
+
+    def get_all_info(self):
+        info = {}
+        for name, grades in self.students.items():
+            if grades:
+                info[name] = {
+                    "grades": grades,
+                    "average": statistics.mean(grades),
+                    "highest": max(grades),
+                    "lowest": min(grades),
+                }
+            else:
+                info[name] = {"grades": [], "average": None}
+        return info
+
+
+
+
+
